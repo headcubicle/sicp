@@ -1,7 +1,7 @@
 #lang planet neil/sicp
 
 (define (sqrt x)
-  (sqrt-iter x 1.0 x))
+  (sqrt-iter 1.0 (improve 1.0 x) x))
 
 (define (sqrt-iter prev guess x)
        (if (good-enough? prev guess)
@@ -16,7 +16,7 @@
   (/ (+ x y) 2))
 
 (define (good-enough? prev guess)
-  (< (abs (- prev guess)) 0.001))
+  (< (abs (/ (- prev guess) guess)) 0.001))
 
 (define (square x)
   (* x x))
