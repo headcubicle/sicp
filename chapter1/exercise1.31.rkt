@@ -29,7 +29,6 @@
 (define (square x) (* x x))
 
 (define (wallis-product n)
-  (define (dec2 x) (- x 2))
-  (/ (* (product identity n dec2 2)
-        (product identity (dec2 n) dec2 4))
-     (square (product identity (dec n) dec2 3))))
+  (define (pi-factor n) (/ (* (- n 2.0) n) (square (- n 1.0))))
+  (define (pi-next n) (- n 2.0))
+  (* (product pi-factor n pi-next 3.0) 4.0))

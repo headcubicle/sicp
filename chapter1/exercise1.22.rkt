@@ -2,9 +2,9 @@
 
 (define (search-for-primes start end)
   (cond ((< start end) (timed-prime-test start)
-                       (search-for-primes (+ start 1) end))
+                       (search-for-primes (+ start 2) end))
         ((> start end) (timed-prime-test start)
-                       (search-for-primes (- start 1) end))))
+                       (search-for-primes (- start 2) end))))
 
 (define (timed-prime-test n)
   (newline)
@@ -34,3 +34,6 @@
   (= (remainder b a) 0))
 
 (define (square n) (* n n))
+
+(define (even? n)
+  (= (remainder n 2) 0))
