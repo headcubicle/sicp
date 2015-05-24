@@ -29,4 +29,19 @@
 (define (cont-frac-b x)
   (cont-frac-r (lambda (i) 1.0)
                (lambda (i) 1.0)
-               x))
+               x
+               1))
+
+; 1.38
+(define (cont-frac n d k)
+  (define (cf i)
+    (if (= i k)
+        (/ (n i) (d i))
+        (/ (n i) (+ (d i) (cf (+ i 1))))))
+  (cf 1))
+
+(define (exercise1.38 x)
+  (+ 2.0 (cont-frac-i (lambda (i) 1.0)
+                      (lambda (i) (if (= (remainder i 3) 2) (* (/ (+ i 1) 3) 2)
+                                      1))
+                      x)))
