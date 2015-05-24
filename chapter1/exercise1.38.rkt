@@ -4,11 +4,11 @@
 (define (cont-frac-i n d k)
   (define (cont-frac-iter x i)
     (define (fraction x)
-      (+ (d i) (/ (n i) x)))
+      (/ (n i) (+ (d i) x)))
     (let ((next (fraction x)))
       (if (> i 1)
           (cont-frac-iter next (- i 1))
-          (/ (n i) next))))
+          next)))
   (cont-frac-iter (d k) k))
 
 (define (cont-frac-a x)
