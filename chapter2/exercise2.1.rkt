@@ -19,11 +19,9 @@
             (* (denom x) (numer y))))
 
 (define (make-rat n d)
-  (let ((absn (abs n))
-        (absd (abs d))
-        (g (gcd (abs n) (abs d))))
-    (if (> (* n d) 0) (cons (/ absn g) (/ absd g))
-        (cons (/ (* -1 absn) g) (/ absd g)))))
+  (let ((g (abs (gcd n d))))
+    (if (< d 0) (cons (/ (- n) g) (/ (- d) g))
+        (cons (/ n g) (/ d g)))))
 
 (define (numer x) (car x))
 (define (denom x) (cdr x))
